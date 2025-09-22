@@ -1,6 +1,5 @@
 package com.paymentproject.payment.ServiceStructureImplementation;
 
-
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
 import java.util.Date;
@@ -22,7 +21,7 @@ import io.jsonwebtoken.security.Keys;
 @Service
 public class JWTService {
 
-     private String secretkey = "";
+    private String secretkey = "";
 
     public JWTService() {
 
@@ -58,8 +57,10 @@ public class JWTService {
         // extract the username from jwt token
         return extractClaim(token, Claims::getSubject);
     }
-    // here T is our return data type and in Function<Claims,T> T is our return data type and claims is on which our function is going to apply 
-    private <T>  T extractClaim(String token, Function<Claims, T> claimResolver) {
+
+    // here T is our return data type and in Function<Claims,T>. T is our return data
+    // type and claims is on which our function is going to apply
+    private <T> T extractClaim(String token, Function<Claims, T> claimResolver) {
         final Claims claims = extractAllClaims(token);
         return claimResolver.apply(claims);
     }
@@ -84,5 +85,5 @@ public class JWTService {
     private Date extractExpiration(String token) {
         return extractClaim(token, Claims::getExpiration);
     }
-    
+
 }

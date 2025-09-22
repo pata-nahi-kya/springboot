@@ -51,7 +51,13 @@ public SecurityFilterChain SFC(HttpSecurity http) throws Exception {
 
 
     
+    // Authentication Provider is used to decide which type of authentication we are using ex Oauth or JWT or basic authentication
+    // here we are using DaoAuthenticationProvider which is used to retrieve user details from a database
+    // we have to provide userDetailsService and passwordEncoder to the DaoAuthenticationProvider
+    // userDetailsService is used to load user details from database and passwordEncoder is used to encode the password
+    // we are using BCryptPasswordEncoder which is a strong hashing function to encode the password
 
+    // there is one more class namedn authentication manager which tells authentication provider which to choose on the basis of given information
     @Bean
     public AuthenticationProvider AP (){
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();

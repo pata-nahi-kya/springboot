@@ -7,7 +7,7 @@ import com.paymentproject.payment.customer.customerInfo;
 
 @Repository
 public interface repository extends JpaRepository<customerInfo , Integer>{
-
+    // Custom query method to find customer by name , we just have to write the method name in a specific format and spring will automatically create the query for us ex. findBy<fieldname>
     customerInfo findBycustomerName(String username);
     
 }
