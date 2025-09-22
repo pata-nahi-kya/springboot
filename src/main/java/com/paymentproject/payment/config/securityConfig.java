@@ -37,6 +37,8 @@ public SecurityFilterChain SFC(HttpSecurity http) throws Exception {
             .requestMatchers("/bank/user/**").hasAnyRole(Role.ADMIN.name(),Role.USER.name())
 
             .anyRequest().authenticated()
+
+            
         )
         .addFilterBefore(jf, UsernamePasswordAuthenticationFilter.class)
         .formLogin(Customizer.withDefaults())
